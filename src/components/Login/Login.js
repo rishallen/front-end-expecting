@@ -13,7 +13,6 @@ const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setpassword] = useState('');
     const history = useHistory(); 
-
     const [loginStatus, setloginStatus] = useState('');
 
     const loginUser = () => {
@@ -24,9 +23,10 @@ const Login = (props) => {
         })
         .then(response => {
             console.log(process.env.REACT_APP_BACKEND_URL);
-            setUsername(response.data);
+            // setUsername(response.data);
             
             if (response.data ){
+                props.onloggedin(response.data.user)
                 history.push("/newProviderForm");
             }
             // if (response.data.message){

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Message from './Post'
 const axios = require('axios');
 
 
@@ -160,7 +159,6 @@ const NewProviderForm = (props) => {
                 <button className="submit-add" onClick={onFormSubmit}>Submit</button>
                 {/* {makeNewProvider && <NewProviderForm addProviderCallback={addProvider} />} */}
             </form>
-            <Message></Message>
         </>
     );
 };
