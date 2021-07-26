@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer';
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 
@@ -7,7 +10,12 @@ function App() {
 
   return (
     <>
-      <Navbar></Navbar>
+      <main id="container">
+        <Router>
+          <Navbar></Navbar>
+        </Router>
+        <Footer></Footer>
+      </main>
     </>
   );
 }

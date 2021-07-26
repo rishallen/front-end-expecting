@@ -1,0 +1,37 @@
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    // background-color: #E2EEF7;
+    border-top:2px solid #536379;
+    // position: fixed;
+    // height: 100px;
+    width: 100%;
+    bottom: 0;
+    right: 0px;
+    // width: 1000px;
+    // margin: 20px auto;
+    /* padding: 0px 100px 0; */
+    /* color: white; */
+    /* font-size: 25px; */
+}
+
+.footer-content {
+    font-size: 0.75em;
+    float: left;
+    display: block;
+
+    .letterhead {
+        display: inline-block;
+        line-height: 160%;
+        // position: absolute;
+        top: 75px;
+        left: 15px;
+        float: left;
+        }
+        span {
+            padding-left: 5px; 
+        }
+    .gray {
+        color: #ccc;
+    }
+}

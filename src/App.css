@@ -1,5 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0;
 }
 
 @font-face {
@@ -11,24 +13,36 @@
 }
 
 body {
-    /* margin: 40px; */
-    /* height:1000px; */
+    /* height: 100vh; */
     font-family: 'Roboto', sans-serif;
 }
-.wrapper {
-    max-width: 940px;
-    /* margin: 0 20px; */
+
+#container {
+    background-color:#eee;
+    /* width: 1000px; */
+    /* margin-bottom: 20px auto; */
+    height: 100vh;
+    grid-template-rows: 100px 1fr 30px;
     display: grid;
 }
 
+#areaA {
+    background-color: lime;
+    row-gap: 10px;
+}
+
+#areaB {
+    background-color: yellow;
+    overflow-y: auto;
+}
+
+#areaC {
+    background-color: orange;
+}
 
 
-/* .footer {
-    background-color: rgb(226, 238, 247);
-    border-top:2px solid red;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    color: white;
-    font-size: 25px;
+/* .content {
+    flex: 1 0 auto;
+    padding: 10px;
 } */
+

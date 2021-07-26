@@ -11,19 +11,29 @@ const NewProviderForm = (props) => {
         title: '',
         social_media_handle: '',
         description: '',
-        addresses: ''
+        street_name: '',
+        state: '',
+        city: '',
+        country: '',
+        postal_code: ''
     });
     const[makeNewProvider, setMakeNewProvider] = useState(false);
     
     const getProviders = () => {
+        //  if props.user is null then return null for the entire user
+        if (!props.user?.provider_id) {
+            return
+        }
         axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/providers`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/providers/${props.user.provider_id}`)
         .then(response => {
             console.log(process.env.REACT_APP_BACKEND_URL);
-            setProviders(response.data);
-            if (response.data.length > 0 ){
-                setFormFields(response.data[0]);
-            }
+            // setProviders(response.data.provider);
+            // if (response.data.length > 0 )
+
+            setFormFields({...response.data.provider, ...response.data.provider.address});
+
+    
         })
         .catch(error => {
             console.log(error)
@@ -78,30 +88,67 @@ const NewProviderForm = (props) => {
             description: event.target.value
         })
     };
-    const onAddressesChange = (event) => {
+    const onStreetNameChange = (event) => {
         setFormFields({
             ...formFields,
-            addresses: event.target.value
+            street_name: event.target.value
         })
+    
+    };
+    const onCityChange = (event) => {
+        setFormFields({
+            ...formFields,
+            city: event.target.value
+        })
+    
+    }
+    const onStateChange = (event) => {
+        setFormFields({
+            ...formFields,
+            state: event.target.value
+        })
+    
+    }
+    const onPostalCodeChange = (event) => {
+        setFormFields({
+            ...formFields,
+            postal_code: event.target.value
+        })
+    
+    }
+    const onCountryChange = (event) => {
+        setFormFields({
+            ...formFields,
+            country: event.target.value
+        })
+    
     }
 
 // this is what happens when the button clicks
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const verb=(props.user.provider_id)?'patch':'post'
+        const providerId=(props.user.provider_id)?`/${props.user.provider_id}`:''
 
-    const onFormSubmit = ({first_name, last_name, title, social_media_handle, description, addresses}) => {
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/providers`,{first_name, last_name, title, social_media_handle, description, addresses})
+        const {first_name, last_name, title, social_media_handle, description, street_name, state, city, postal_code, country}=formFields
+        axios[verb](`${process.env.REACT_APP_BACKEND_URL}/providers${providerId}`,
+            {first_name, last_name, title, social_media_handle, description, 
+                address: {street_name, city, state, postal_code, country }, user_id:props.user.user_id})
         .then( response => {
-            console.log(response.data);
-            getProviders();
+            console.log(response.data.provider.provider_id);
+            props.user.provider_id = response.data.provider.provider_id
         })
         .catch(error => console.log(error))
         .finally('Tried to upload your information')
     }
 
-    
+    if (!props.user) {
+        return <div>please log in</div>
+    }
 
     return (
         <>
-            <form id="new-provider-form">
+            <form id="new-provider-form" onSubmit={onFormSubmit}>
                 <div>
                     <label htmlFor="first_name">First name:</label>
                     <input
@@ -148,15 +195,51 @@ const NewProviderForm = (props) => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="addresses">Address:</label>
+                    <label htmlFor="street_name">Street:</label>
                     <input
                         className="new-item-input"
-                        name="addresses"
-                        value={formFields.addresses}
-                        onChange={onAddressesChange}
+                        name="street"
+                        value={formFields.street_name}
+                        onChange={onStreetNameChange}
                     />
                 </div>
-                <button className="submit-add" onClick={onFormSubmit}>Submit</button>
+                <div>
+                    <label htmlFor="city">City:</label>
+                    <input
+                        className="new-item-input"
+                        name="city"
+                        value={formFields.city}
+                        onChange={onCityChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="state">State:</label>
+                    <input
+                        className="new-item-input"
+                        name="state"
+                        value={formFields.state}
+                        onChange={onStateChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="postal_code">Zip Code:</label>
+                    <input
+                        className="new-item-input"
+                        name="postal_code"
+                        value={formFields.postal_code}
+                        onChange={onPostalCodeChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="country">Country:</label>
+                    <input
+                        className="new-item-input"
+                        name="country"
+                        value={formFields.country}
+                        onChange={onCountryChange}
+                    />
+                </div>
+                <input type="submit" className="submit-add"></input>
                 {/* {makeNewProvider && <NewProviderForm addProviderCallback={addProvider} />} */}
             </form>
         </>

@@ -7,7 +7,7 @@ const Provider = (props) => {
 
     const formatAddress = (addressObj) => {
         
-        return `${addressObj.street}, ${addressObj.city}, ${addressObj.state}, ${addressObj.country}, ${addressObj.postalCode}`;
+        return `${addressObj.street_name}, ${addressObj.city}, ${addressObj.state}, ${addressObj.country}, ${addressObj.postal_code}`;
         
     }
 
@@ -20,7 +20,7 @@ const Provider = (props) => {
                 <li>Social Media Handle: {props.social_media_handle}</li>
                 <li>Description: {props.description}</li>
                 <li>Address: {formatAddress(props.address)}</li>
-                <button onClick={props.chat}>send message</button>
+                <button onClick={props.message}>send message</button>
             </ul>
         </div>
     );
@@ -33,7 +33,7 @@ Provider.propTypes = {
     social_media_handle: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     address: PropTypes.object.isRequired,
-    chat: PropTypes.any.isRequired
+    message: PropTypes.any.isRequired
 };
 
 export default Provider;

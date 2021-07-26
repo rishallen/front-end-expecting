@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Provider from './Provider'
 import Search from './Search'
-// import NewProviderForm from './NewProviderForm'
+import Navbar from "./Navbar/Navbar";
 import './ProviderList.css'
 import { useHistory } from "react-router-dom";
 
@@ -81,7 +81,6 @@ const ProviderList = (props) => {
     }
     
     const onProviderSelect = (event) => {
-        
         // if event.target.value = all then dont filter!
         const subset = event.target.value
         
@@ -150,8 +149,8 @@ const ProviderList = (props) => {
                 description={provider.description} 
                 address={provider.address} 
                 addProvider={addProvider}
-                chat={() => 
-                    history.push("/newProviderForm")
+                message={() => 
+                    history.push("/Post")
                 } 
                 />
                 )}
