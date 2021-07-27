@@ -1,4 +1,5 @@
-import React from "react"; 
+import React from "react";
+import Login from "../../components/Login/Login";
 import '../../App.css';
 // import logoImg from "../../logo.png";
 
@@ -10,14 +11,14 @@ import HomePage from '../../components/HomePage';
 import NewProviderForm from '../../components/NewProviderForm';
 import ProviderList from '../../components/ProviderList';
 import PageNotFound from '../../components/PageNotFound';
-import Login from '../../components/Login/Login'
 import Register from '../../components/Login/Register'
 import Post from '../../components/Post';
 
 
 import {
-    BrowserRouter as Route,
+    BrowserRouter as Router,
     Link,
+    Route,
     Switch,
     Redirect
 } from "react-router-dom";
@@ -56,13 +57,13 @@ const Navbar = (props) => {
 
     return (
     <>
-    {/* <Router> */}
+    <Router>
 
     <Nav id="areaA">
         <div className="logo">
             <Link to="/">
                 {/* <img src={logoImg} alt='logo' /> */}
-                <p>Expecting</p>
+                <p>Expecting.com</p>
             </Link>
         </div>
         {/* <Bars />
@@ -78,7 +79,7 @@ const Navbar = (props) => {
                 <li className="nav-item"><Link to="/providerList"  activeStyle>Providers</Link></li>
                 <li className="nav-item"><Link to="/newProviderForm"  activeStyle>Provider Form</Link></li>
                 <li className="nav-item"><Link to="/post"  activeStyle>Post</Link></li>
-                <li className="nav-item"><Link to="/register" classname="NavLink" activeStyle>Sign Up</Link></li>
+                {/* <li className="nav-item"><Link to="/register" className="NavLink" activeStyle>Sign Up</Link></li> */}
                     {/* </NavMenu> */}
                 <NavBtn>
                     <NavBtnLink to='/Login'>Login</NavBtnLink>
@@ -92,7 +93,7 @@ const Navbar = (props) => {
             <Route exact path="/"><HomePage /></Route>
             <Route exact path="/about" ><About /></Route>
             <Route exact path="/providerList" ><ProviderList /></Route>
-            <Route exact path="/newProviderForm" ><NewProviderForm /></Route>
+            <Route exact path="/newProviderForm" ><NewProviderForm user={user}/></Route>
             <Route exact path="/login" ><Login onloggedin={setUser} /></Route>
             <Route exact path="/register" ><Register /></Route>
             <Route exact path="/post" ><Post /></Route>
@@ -100,7 +101,7 @@ const Navbar = (props) => {
             <Route><Redirect to="/404"/></Route>
         </Switch>
     </div>
-    {/* </Router> */}
+    </Router>
     </>
     );
 

@@ -1,32 +1,103 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Post from './Post';
-import './PostList.css';
+// import './PostList.css';
 import PropTypes from 'prop-types';
 
-const PostList = props => {
-  // const [selectedPost, setSelectedPost] = useState({post:{board_id: null, post_id: null, message:'', like_count:''}});
+const axios = require('axios');
+
+
+const filterPosts = (posts, subset) => {
+  if (subset==='all') {
+      return posts;
+  }
+  console.log("glue", posts)
+  console.log("mustard", subset)
+
+  return posts.filter((post) => {
+
+    // const username = post.username.toLowerCase();
+    // const userCheck = (!query || username.includes(query))
+
+    const idCheck = (subset==='all' || post.user_id.includes(subset))
+    
+    return idCheck
+  });
+}
+
+const PostList = (props) => {
+
+  const[posts, setPosts] = useState([]);
+  const[subset, setSubset] = useState('all');
+  
+  const[makeNewPost, setMakeNewPost] = useState(false);
+
+  const getPosts = () => {
+      axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/providers/${props.provider_id}/users/${props.user_id}/posts`)
+      .then(response => {
+          console.log(process.env.REACT_APP_BACKEND_URL);
+          setPosts(response.data);
+          console.log(posts)
+      })
+      .catch(error => {
+          console.log(error)
+      })
+      .finally(() => console.log("Tried to get posts"));  
+  }
+  
+  useEffect( () => {
+      getPosts();
+  }, []);
+
+  const onNewPostButtonClick  = event => {
+  setMakeNewPost(true);
+  }
+
+  const addPost = ({message}) => {
+      axios.post(`${process.env.REACT_APP_BACKEND_URL}/providers/${props.provider_id}/users/${props.user_id}/posts`,{message})
+      .then( response => {
+          console.log(response.data);
+          getPosts();
+      })
+      .catch(error => console.log(error))
+      .finally('Tried to upload your information')
+  }
+  
+  const onPostSelect = (event) => {
+      // if event.target.value = all then dont filter!
+      const subset = event.target.value
+      
+      setSubset(subset)
+  }
+
+  // const [searchQuery, setSearchQuery] = useState('');
+  const filteredPosts = filterPosts(posts, subset);
 
   return (
     <section id="post-list">
-    {props.posts.map( post => 
-      <Post key={post.post_id} 
-        providerid={post.board_id} 
-        post_id={post.post_id} 
-        message={post.message} 
-        votes={post.votes} 
-        onDeleteCard={props.onDeleteCard}
-        onVoteCard={props.onVoteCard} 
-      />
-    )}
+      <h4>Check your messages:</h4>
+        <select className="post-list-select" value={subset} onChange={onPostSelect}>
+          <option value="all">all</option>
+      </select>
+      
+      <div>
+        {filteredPosts.map( post => 
+          <Post 
+            key={post.post_id} 
+            post_id={post.post_id}
+            provider={post.provider_id} 
+            message={post.message}
+            addPosts={addPost} 
+            onDeleteCard={post.onDeleteCard}
+            // votes={post.votes} 
+            // onVotePost={props.onVotePost} 
+          // onClick={() => history.push('/Products')}
+          />
+        )}
+      </div>
     </section>
   );
 };
+
 export default PostList;
 
-Post.propTypes = {
-  id: PropTypes.number.isRequired,  
-  message: PropTypes.string.isRequired,
-  votes: PropTypes.string.isRequired,
-  onDeleteCard: PropTypes.func.isRequired,
-  onVoteCard: PropTypes.number.isRequired
-};

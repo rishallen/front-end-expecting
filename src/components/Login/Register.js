@@ -1,5 +1,6 @@
 import React from 'react'; 
 import { useState } from 'react';
+import './Register.css'
 import loginImg from "../../login.png";
 
 const axios = require('axios');
@@ -29,39 +30,36 @@ const Register = (props) => {
     }
 
     return (
-        <div className="base-container" ref={props.containerRef}>
-            <div className="header">Register</div>
-            <div className="content">
-                <div className="image">
-                    <img src={loginImg} />
+        <>
+        <div className="body"></div>
+            <div className="grad"></div>
+            <div className="header">
+                <div><span>Expecting</span></div>
+            </div>
+            <div className="login">
+                <div className="form-group">
+                    <label htmlFor="username"></label>
+                    <input type="text" value={usernameReg} autoComplete="off" name="username" placeholder="username" onChange={(e)=> {
+                        setUsernameReg(e.target.value);
+                    }}/>
                 </div>
-                <div className="form">
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" value={usernameReg} autoComplete="off" name="username" placeholder="username" onChange={(e)=> {
-                            setUsernameReg(e.target.value);
-                        }}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="text" value={emailReg} autoComplete="off" name="email" placeholder="email" onChange={(e)=> {
-                            setemailReg(e.target.value);
-                        }}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" value={passwordReg} autoComplete="off" name="password" placeholder="password" onChange={(e)=> {
-                            setpasswordReg(e.target.value);
-                        }}/>
-                    </div>
+                <div className="form-group">
+                    <label htmlFor="email"></label>
+                    <input type="text" value={emailReg} autoComplete="off" name="email" placeholder="email" onChange={(e)=> {
+                        setemailReg(e.target.value);
+                    }}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password"></label>
+                    <input type="password" value={passwordReg} autoComplete="off" name="password" placeholder="password" onChange={(e)=> {
+                        setpasswordReg(e.target.value);
+                    }}/>
+                </div>
+                <div>
+                    <input type="button" value="sign-up" onClick={registerUser}/>
                 </div>
             </div>
-            <div className="footer">
-                <button type="button" className="btn" onClick={registerUser}>
-                    Register
-                </button>
-            </div>
-        </div>
+        </>
     );
 };
 

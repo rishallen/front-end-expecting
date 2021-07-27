@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Provider from './Provider'
 import Search from './Search'
-import Navbar from "./Navbar/Navbar";
+// import Navbar from "./Navbar/Navbar";
 import './ProviderList.css'
 import { useHistory } from "react-router-dom";
 
@@ -150,8 +150,10 @@ const ProviderList = (props) => {
                 address={provider.address} 
                 addProvider={addProvider}
                 message={() => 
-                    history.push("/Post")
+                    history.push("/post")
+                    // console.log("hello")
                 } 
+                // onClick={() => history.push('/Products')}
                 />
                 )}
                 

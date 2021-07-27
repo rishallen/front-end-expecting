@@ -30,7 +30,7 @@ export const Nav = styled.nav`
         font-family: 'Lobstor';
         font-style: normal;
         font-weight: 900;
-        font-size: 1.5em;
+        font-size: 1.6em;
         src: url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); /* IE9 Compat Modes */
         src: local('Roboto'), local('Roboto'),
 
@@ -39,7 +39,7 @@ export const Nav = styled.nav`
             display: block;
         }
         em {
-            font-size: 0.5em;
+            font-size: 1em;
             float: left;
             display: block;
             img {

@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
+import PostList from './PostList'
+import "./NewProviderForm.css";
+import Login from "./Login/Login";
+
+import NewProviderFormElements from './NewProviderFormElements'
+
 const axios = require('axios');
 
 
 const NewProviderForm = (props) => {
     const[providers, setProviders] = useState([]);
+    const [name, setName] = useState("");
+    const [showForm, setShowForm] = useState(false);
+
+    const toggleShowForm = () => {
+        setShowForm(!showForm)
+    }
     
     const [formFields, setFormFields] = useState({
         first_name: '',
@@ -142,106 +154,142 @@ const NewProviderForm = (props) => {
         .finally('Tried to upload your information')
     }
 
+    // User check:
     if (!props.user) {
         return <div>please log in</div>
     }
 
     return (
         <>
-            <form id="new-provider-form" onSubmit={onFormSubmit}>
-                <div>
-                    <label htmlFor="first_name">First name:</label>
-                    <input
-                        className="new-item-input"
-                        name="first_name"
-                        value={formFields.first_name}
-                        onChange={onFirstNameChange}
-                    />                
+            <h1>Hello,
+                <span>
+                    <h3>{props.user.username}</h3>
+                </span>
+            </h1>
+            <section id="providerformContainer">
+                <div className="wrapper">
+                    <div id="formAreaA">
+                        <h3>Create Your Profile</h3>
+                    <button onClick={toggleShowForm}>Create</button>
+                    { showForm &&
+                        <form className="contact-form-row" onSubmit={onFormSubmit}>
+                            <div className="form-field col x-50">
+                                <label htmlFor="first_name" className="label">First name:</label>
+                                <input
+                                    id="first_name"
+                                    // className="new-item-input"
+                                    className="input-text js-input"
+                                    type="text" required
+                                    // name="_name"
+                                    value={formFields.first_name}
+                                    onChange={onFirstNameChange}
+                                />                
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="last_name" className="label">Last name:</label>
+                                <input
+                                    // className="new-item-input"
+                                    id="last_name"
+                                    className="input-text js-input" 
+                                    type="text" required
+                                    // name="last_name"
+                                    value={formFields.last_name}
+                                    onChange={onLastNameChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="title" className="label">Title:</label>
+                                <input
+                                    className="new-item-input"
+                                    id="title"
+                                    type="text" required
+                                    value={formFields.title}
+                                    onChange={onTitleChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="" className="label">Social Media Handle:</label>
+                                <input
+                                    className="new-item-input"
+                                    id="social_media_handle"
+                                    type="text" required
+                                    value={formFields.social_media_handle}
+                                    onChange={onSocialMediaHandleChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="street_name" className="label">Street:</label>
+                                <input
+                                    className="new-item-input"
+                                    id="street"
+                                    type="text" required
+                                    value={formFields.street_name}
+                                    onChange={onStreetNameChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="city" className="label">City:</label>
+                                <input
+                                    className="input-text js-input"
+                                    id="city"
+                                    type="text" required
+                                    value={formFields.city}
+                                    onChange={onCityChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="state" className="label">State:</label>
+                                <input
+                                    className="input-text js-input"
+                                    id="state"
+                                    type="text" required
+                                    value={formFields.state}
+                                    onChange={onStateChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="postal_code" className="label">Zip Code:</label>
+                                <input
+                                    className="input-text js-input"
+                                    id="postal_code"
+                                    type="text" required
+                                    value={formFields.postal_code}
+                                    onChange={onPostalCodeChange}
+                                />
+                            </div>
+                            <div className="form-field col x-50">
+                                <label htmlFor="country" className="label">Country:</label>
+                                <input
+                                    className="input-text js-input"
+                                    id="country"
+                                    type="text" required
+                                    value={formFields.country}
+                                    onChange={onCountryChange}
+                                />
+                            </div>
+                            <div className="form-field col x-100">
+                                <label htmlFor="description" className="label">Description:</label>
+                                <input
+                                    className="input-text js-input"
+                                    id="description"
+                                    type="text" required
+                                    value={formFields.description}
+                                    onChange={onDescriptionChange}
+                                />
+                            </div>
+                            <div className="form-field col x-100 align-center">
+                                <input type="submit" className="submit-btn" value="Submit"></input>
+                                {/* {makeNewProvider && <NewProviderForm addProviderCallback={addProvider} />} */}
+                            </div>
+                        </form> }
+                        </div> 
+                    <div id="formAreaB">
+                        <PostList user={props.user} 
+                        
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="last_name">Last name:</label>
-                    <input
-                        className="new-item-input"
-                        name="last_name"
-                        value={formFields.last_name}
-                        onChange={onLastNameChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="title">Title:</label>
-                    <input
-                        className="new-item-input"
-                        name="title"
-                        value={formFields.title}
-                        onChange={onTitleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="">Social Media Handle:</label>
-                    <input
-                        className="new-item-input"
-                        name="social_media_handle"
-                        value={formFields.social_media_handle}
-                        onChange={onSocialMediaHandleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <input
-                        className="new-item-input"
-                        name="description"
-                        value={formFields.description}
-                        onChange={onDescriptionChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="street_name">Street:</label>
-                    <input
-                        className="new-item-input"
-                        name="street"
-                        value={formFields.street_name}
-                        onChange={onStreetNameChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="city">City:</label>
-                    <input
-                        className="new-item-input"
-                        name="city"
-                        value={formFields.city}
-                        onChange={onCityChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="state">State:</label>
-                    <input
-                        className="new-item-input"
-                        name="state"
-                        value={formFields.state}
-                        onChange={onStateChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="postal_code">Zip Code:</label>
-                    <input
-                        className="new-item-input"
-                        name="postal_code"
-                        value={formFields.postal_code}
-                        onChange={onPostalCodeChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="country">Country:</label>
-                    <input
-                        className="new-item-input"
-                        name="country"
-                        value={formFields.country}
-                        onChange={onCountryChange}
-                    />
-                </div>
-                <input type="submit" className="submit-add"></input>
-                {/* {makeNewProvider && <NewProviderForm addProviderCallback={addProvider} />} */}
-            </form>
+            </section>
         </>
     );
 };

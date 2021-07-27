@@ -1,6 +1,6 @@
 .footer {
     flex-shrink: 0;
-    text-align: center;
+    // text-align: center;
     // background-color: #E2EEF7;
     border-top:2px solid #536379;
     // position: fixed;
@@ -16,17 +16,18 @@
 }
 
 .footer-content {
-    font-size: 0.75em;
+    font-size: 1em;
     float: left;
-    display: block;
+    // display: block;
 
     .letterhead {
-        display: inline-block;
+        // display: inline-block;
         line-height: 160%;
-        // position: absolute;
-        top: 75px;
-        left: 15px;
-        float: left;
+        position: absolute;
+        left: 20px;
+        // top: 75px;
+        // left: 15px;
+        // float: left;
         }
         span {
             padding-left: 5px; 
@@ -34,4 +35,66 @@
     .gray {
         color: #ccc;
     }
+}
+
+.footer--social-icons li {
+    font-size: 20px;
+    // width: 35px;
+    // height: 35px;
+    // margin-right: 8px;
+    // grid-template-rows: 100px 1fr 35px;
+
+    // display: inline;
+    margin: 0 5px;
+    position: relative;
+    // left: 25px;
+    // top: 0;
+    width: 100%;
+    // z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    padding: 0px 20px;
+    // height: 140px;
+    // margin-bottom: 60px;
+    // background: #f8f8f8;
+}
+
+.footer--social-icons {
+    float: right;
+    display: flex;
+    position: relative;
+}
+
+.footer--social-icons > ul > li > a {
+    text-decoration: none;
+}
+
+.footer--social-icons li {
+    font-size: 20px;
+    margin: 0 5px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 4px;
+    right: 39px;
+}
+
+.footer--social-icons > ul > li > a:visited {
+    color: rgb(253, 246, 227);
+}
+
+.footer--social-icons > ul > li > a:visited {
+    color: rgb(253, 246, 227);
+}
+
+.footer--social-icons > ul > li > a:active {
+    color: rgb(77, 71, 71);
+    color: rgb(253, 246, 227);
+    font-weight: bold;
+}
+
+.footer--social-icons > ul > li > a:hover {
+    color: rgb(175, 79, 14);
 }

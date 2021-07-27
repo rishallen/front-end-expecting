@@ -22,7 +22,7 @@ body {
     /* width: 1000px; */
     /* margin-bottom: 20px auto; */
     height: 100vh;
-    grid-template-rows: 100px 1fr 30px;
+    grid-template-rows: 80px 1fr 35px;
     display: grid;
 }
 
@@ -32,8 +32,9 @@ body {
 }
 
 #areaB {
-    background-color: yellow;
+    background-color: #298465;
     overflow-y: auto;
+    margin: 10px;
 }
 
 #areaC {
@@ -46,3 +47,12 @@ body {
     padding: 10px;
 } */
 
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
