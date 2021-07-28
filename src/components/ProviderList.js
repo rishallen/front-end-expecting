@@ -149,7 +149,8 @@ const ProviderList = (props) => {
                 title={provider.title} 
                 social_media_handle={provider.social_media_handle} 
                 description={provider.description} 
-                address={provider.address} 
+                address={provider.address}
+                user={props.user}
                 addProvider={addProvider}
                 message={() => 
                     history.push("/post")

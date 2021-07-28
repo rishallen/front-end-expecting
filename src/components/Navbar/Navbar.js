@@ -12,7 +12,7 @@ import NewProviderForm from '../../components/NewProviderForm';
 import ProviderList from '../../components/ProviderList';
 import PageNotFound from '../../components/PageNotFound';
 import Register from '../../components/Login/Register'
-import Post from '../../components/Post';
+import PostList from '../../components/PostList';
 
 
 import {
@@ -92,11 +92,11 @@ const Navbar = (props) => {
             {/*All Routes go here*/}
             <Route exact path="/"><HomePage /></Route>
             <Route exact path="/about" ><About /></Route>
-            <Route exact path="/providerList" ><ProviderList /></Route>
+            <Route exact path="/providerList" ><ProviderList user={user}/></Route>
             <Route exact path="/newProviderForm" ><NewProviderForm user={user}/></Route>
             <Route exact path="/login" ><Login onloggedin={setUser} /></Route>
             <Route exact path="/register" ><Register /></Route>
-            <Route exact path="/post" ><Post user={user}/></Route>
+            <Route exact path="/post" ><PostList user={user}/></Route>
             <Route exact path="/404" ><PageNotFound /></Route>
             <Route><Redirect to="/404"/></Route>
         </Switch>

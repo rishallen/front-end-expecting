@@ -85,6 +85,9 @@ const PostList = (props) => {
       setSubset(subset)
   }
 
+  const onDeletePost = (post_id) => {
+    console.log("hello world")
+  }
   // const [searchQuery, setSearchQuery] = useState('');
   const filteredPosts = filterPosts(posts, subset);
 
@@ -103,7 +106,7 @@ const PostList = (props) => {
             provider={post.provider_id} 
             message={post.message}
             addPosts={addPost} 
-            onDeleteCard={post.onDeleteCard}
+            onDeletePost={onDeletePost}
             // votes={post.votes} 
             // onVotePost={props.onVotePost} 
           // onClick={() => history.push('/Products')}
