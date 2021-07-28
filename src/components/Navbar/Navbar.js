@@ -96,7 +96,7 @@ const Navbar = (props) => {
             <Route exact path="/newProviderForm" ><NewProviderForm user={user}/></Route>
             <Route exact path="/login" ><Login onloggedin={setUser} /></Route>
             <Route exact path="/register" ><Register /></Route>
-            <Route exact path="/post" ><Post /></Route>
+            <Route exact path="/post" ><Post user={user}/></Route>
             <Route exact path="/404" ><PageNotFound /></Route>
             <Route><Redirect to="/404"/></Route>
         </Switch>

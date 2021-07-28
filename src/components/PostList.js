@@ -30,13 +30,24 @@ const PostList = (props) => {
   const[subset, setSubset] = useState('all');
   
   const[makeNewPost, setMakeNewPost] = useState(false);
+  console.log("fries", props)
 
   const getPosts = () => {
       axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/providers/${props.provider_id}/users/${props.user_id}/posts`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/posts`)
       .then(response => {
           console.log(process.env.REACT_APP_BACKEND_URL);
-          setPosts(response.data);
+          let getFilteredMessages = [];
+          if (props.user) {
+            getFilteredMessages = response.data.filter( (message) => {
+              return props.user.user_id === message.user_id
+            })
+          } else if (props.provider) { 
+            getFilteredMessages = response.data.filter( (message) => {
+              return props.provider.provider_id === message.provider_id
+            })
+          }
+          setPosts(getFilteredMessages);
           console.log(posts)
       })
       .catch(error => {
@@ -46,8 +57,12 @@ const PostList = (props) => {
   }
   
   useEffect( () => {
+      if (!props.provider && !props.user) {
+        return
+      }
       getPosts();
   }, []);
+
 
   const onNewPostButtonClick  = event => {
   setMakeNewPost(true);
@@ -76,7 +91,7 @@ const PostList = (props) => {
   return (
     <section id="post-list">
       <h4>Check your messages:</h4>
-        <select className="post-list-select" value={subset} onChange={onPostSelect}>
+        <select className=" transparent_btn submit-btn post-list-select" value={subset} onChange={onPostSelect}>
           <option value="all">all</option>
       </select>
       

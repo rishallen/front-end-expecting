@@ -9,8 +9,12 @@ const Provider = (props) => {
     const [name, setName] = useState("");
     const [comment, setComment] = useState("");
 
-    const onFormSubmit= () => {
-        console.log("hello", name, comment)
+    const onFormSubmit= (e) => {
+        e.preventDefault()
+        // call my endpoint
+        // post request
+        // pass down a user, user = props.user
+        // provider_id
     }
 
     const onChange = (e) => {

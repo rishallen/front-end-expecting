@@ -15,7 +15,7 @@ export const Nav = styled.nav`
     // height: 140px;
     // margin-bottom: 60px;
     // background: #f8f8f8;
-    background: red;
+    // background: red;
 
 
     .logo a {
@@ -63,7 +63,7 @@ export const Nav = styled.nav`
             opacity: 0.55;
             transition: all 0.6s;
             color: #536379;
-            font-size: 1em;
+            font-size: 1.2em;
         }
         a:hover {
             opacity: 1;
@@ -85,7 +85,7 @@ export const Nav = styled.nav`
                 margin: 15px 15px;
                 justify-content: space-between;
                 font-size: 1em;
-                border: 2px solid green;
+                // border: 2px solid green;
             }
             a {
             font-size: 1em;

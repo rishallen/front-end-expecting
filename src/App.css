@@ -18,7 +18,7 @@ body {
 }
 
 #container {
-    background-color:#eee;
+    background-color:rgb(195, 213, 218);
     /* width: 1000px; */
     /* margin-bottom: 20px auto; */
     height: 100vh;
@@ -27,18 +27,18 @@ body {
 }
 
 #areaA {
-    background-color: lime;
+    /* background-color: lime; */
     row-gap: 10px;
 }
 
 #areaB {
-    background-color: #298465;
+    /* background-color: #298465; */
     overflow-y: auto;
     margin: 10px;
 }
 
 #areaC {
-    background-color: orange;
+    /* background-color: orange; */
 }
 
 
@@ -56,3 +56,4 @@ body {
     white-space: nowrap;
     width: 1px;
 }
+

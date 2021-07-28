@@ -127,16 +127,18 @@ const ProviderList = (props) => {
                     
                 )}
             </select> */}
+            <div className="provider-list-container">
+                <select className="provider-list-select provider-btn transparent_btn:hover" value={subset} onChange={onProviderSelect}>
+                    <option value="all">all</option>
+                    <option value="doula">doula</option>
+                    <option value="midwife">midwife</option>
+                </select>
+                <Search
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                />
+            </div>
 
-            <select className="provider-list-select" value={subset} onChange={onProviderSelect}>
-                <option value="all">all</option>
-                <option value="doula">doula</option>
-                <option value="midwife">midwife</option>
-            </select>
-            <Search
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-            />
             <div>
                 {filteredProviders.map( provider => 
                 <Provider 

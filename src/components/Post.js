@@ -54,7 +54,11 @@ const Post = (props) => {
                 <button className="post-button" onClick={onDeleteButtonClick}> Delete </button>
                 {/* <button onCllick={}>Submit</button> */}
             </div>
-            <div> <PostList /></div>
+            <div> <PostList 
+                        user={props.user} 
+                    
+                    />
+            </div>
         </div>
     );
 };
