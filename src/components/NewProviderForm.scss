@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 2px solid green;
+    // border: 2px solid green;
 }
 
 #formAreaA {
@@ -38,7 +38,7 @@
 }
 
 #formAreaB {
-    background-color: #298465;
+    // background-color: #298465;
     overflow-y: auto;
     margin: 10px;
 }
@@ -111,10 +111,10 @@ form .input-box span.details{
 }
 .user-details .input-box input{
     height: 45px;
-    width: 100%;
+    width: 250px;
     outline: none;
     font-size: 16px;
-    border-radius: 5px;
+    // border-radius: 5px;
     padding-left: 15px;
     border: 1px solid rgb(167, 161, 161);
     border-bottom-width: 2px;
@@ -218,6 +218,7 @@ form .button1{
 	color: #FFF;
 	border: 1px solid #FFF;
     margin-top: 10px;
+    margin-bottom: 25px;
 	text-decoration: none;
 	font-size: 14px;
 	line-height: 120%;
@@ -240,8 +241,14 @@ form .button1{
 //     color: black; 
 //     border: 2px solid #4CAF50;
 // }
-p {
-    font-size: 24px;
+.title p {
+    font-size: 18px;
+    font-weight: 400;
     color: gray;
 
+}
+
+.input-text js-input .box11 {
+    height: 145px;
+    width: 250px;
 }

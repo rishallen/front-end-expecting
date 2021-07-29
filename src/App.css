@@ -33,8 +33,9 @@ body {
 
 #areaB {
     /* background-color: #298465; */
+    padding: 60px;
     overflow-y: auto;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 #areaC {
@@ -57,3 +58,10 @@ body {
     width: 1px;
 }
 
+.body-container {
+    background: url('/Users/rishaallen/Developer/ada-projects/front-end-expecting/src/components/Navbar/—Pngtree—rainbow_5054102 (1).png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

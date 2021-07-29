@@ -119,47 +119,40 @@ const ProviderList = (props) => {
 
     return (
         <>
-            <h2>Providers</h2>
-            {/* <select className="provider-list-select" onChange={onProviderSelect}>
-                {filteredProviders.map(provider =>
-                    <option key={provider.provider_id} value={provider.provider_id}>{provider.title}
-                    </option>
-                    
-                )}
-            </select> */}
-            <div className="provider-list-container">
-                <select className="provider-list-select provider-btn transparent_btn:hover" value={subset} onChange={onProviderSelect}>
-                    <option value="all">all</option>
-                    <option value="doula">doula</option>
-                    <option value="midwife">midwife</option>
-                </select>
-                <Search
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                />
-            </div>
+            <section className="provider-container">
+                <h2 className="providers-header itemB">Doulas And Midwives To Follow — Whether You're Expecting Or Not</h2>
+                    <div className="custom-select">
+                        <select className="provider-list-select provider-btn transparent_btn:hover itemA" value={subset} onChange={onProviderSelect}>
+                            <option value="all">all</option>
+                            <option value="doula">doula</option>
+                            <option value="midwife">midwife</option>
+                        </select>
+                    <Search className="search-list-providerList"
+                        searchQuery={searchQuery}
+                        setSearchQuery={setSearchQuery}
+                    />
+                </div>
+            </section>
 
             <div>
                 {filteredProviders.map( provider => 
-                <Provider 
-                key={provider.provider_id} 
-                provider_id={provider.provider_id} 
-                first_name={provider.first_name} 
-                last_name={provider.last_name} 
-                title={provider.title} 
-                social_media_handle={provider.social_media_handle} 
-                description={provider.description} 
-                address={provider.address}
-                user={props.user}
-                addProvider={addProvider}
-                message={() => 
-                    history.push("/post")
-                    // console.log("hello")
-                } 
-                // onClick={() => history.push('/Products')}
-                />
+                    <Provider 
+                        key={provider.provider_id} 
+                        provider_id={provider.provider_id} 
+                        first_name={provider.first_name} 
+                        last_name={provider.last_name} 
+                        title={provider.title} 
+                        social_media_handle={provider.social_media_handle} 
+                        description={provider.description} 
+                        address={provider.address}
+                        user={props.user}
+                        addProvider={addProvider}
+                        message={() => 
+                            history.push("/post")
+                            // console.log("hello")
+                        } 
+                    />
                 )}
-                
             </div>
         </>
     );

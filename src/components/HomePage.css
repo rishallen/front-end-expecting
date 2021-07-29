@@ -1,0 +1,34 @@
+.body {
+	/* position: absolute; */
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+    background-color: 298465;
+	/* background-image: url('/Users/rishaallen/Developer/ada-projects/front-end-expecting/src/components/Navbar/—Pngtree—rainbow_5054102 (1).png'); */
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	z-index: 0;
+}
+
+/* .body-container {
+    background: url('/Users/rishaallen/Developer/ada-projects/front-end-expecting/src/components/Navbar/—Pngtree—rainbow_5054102 (1).png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} */
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 250px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }

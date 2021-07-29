@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Post from './Post';
-// import './PostList.css';
+import './PostList.css';
 import PropTypes from 'prop-types';
 
 const axios = require('axios');
@@ -92,11 +92,13 @@ const PostList = (props) => {
   const filteredPosts = filterPosts(posts, subset);
 
   return (
-    <section id="post-list">
-      <h4>Check your messages:</h4>
-        <select className=" transparent_btn submit-btn post-list-select" value={subset} onChange={onPostSelect}>
-          <option value="all">all</option>
-      </select>
+    <section id="post">
+      <h4 className="post-list-header">Check your messages:</h4>
+        <div className="post-list-select">
+          <select className="transparent_btn post-list-btn" value={subset} onChange={onPostSelect}>
+            <option value="all">all</option>
+          </select>
+        </div>
       
       <div>
         {filteredPosts.map( post => 

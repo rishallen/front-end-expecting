@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PostList from './PostList'
 import "./NewProviderForm.scss";
-import Login from "./Login/Login";
+// import Login from "./Login/Login";
+import { FaUserAlt } from "react-icons/fa";
 
 import NewProviderFormElements from './NewProviderFormElements'
 
@@ -169,14 +170,16 @@ const NewProviderForm = (props) => {
                 </span>
             </div>
             <section id="providerformContainer">
-                <div className="wrapper">
+                <div className="wrapper card-block">
                     <div id="formAreaA">
                         <p className="title">Create Your Profile</p>
                         <button className="provider-profile-btn transparent_btn" onClick={toggleShowForm}>Create</button>
                         { showForm &&
+                        
                             <form action="#" className="contact-form-row" onSubmit={onFormSubmit}>
-                                <div className="user-deatails">
-                                    <div className="input-box">
+                                <div className="user-details">
+                                <div className="input-box">
+                                    <div className="FaUserAlt prefix"><FaUserAlt/></div>
                                         <label htmlFor="first_name"><span className="details">First name:</span></label>
                                         <input
                                             id="first_name"
@@ -186,113 +189,134 @@ const NewProviderForm = (props) => {
                                             // name="_name"
                                             value={formFields.first_name}
                                             onChange={onFirstNameChange}
-                                            />                
-                                        </div>
-                            
+                                        />
+                                    </div>                
+                                
+                
                                 <div className="input-box">
-                                    <label htmlFor="last_name"><span className="details">Last name:</span></label>
-                                    <input
-                                        // className="new-item-input"
-                                        id="last_name"
-                                        className="input-text js-input" 
-                                        type="text" required
-                                        // name="last_name"
-                                        value={formFields.last_name}
-                                        onChange={onLastNameChange}
+                                    <div className="FaUserAlt prefix"><FaUserAlt/></div>
+                                        <label htmlFor="last_name"><span className="details">Last name:</span></label>
+                                        <input
+                                            // className="new-item-input"
+                                            id="last_name"
+                                            className="input-text js-input" 
+                                            type="text" required
+                                            // name="last_name"
+                                            value={formFields.last_name}
+                                            onChange={onLastNameChange}
+                                        />
+                                </div>
+
+                                <div className="input-box">
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="title"><span className="details">Title:</span></label>
+                                        <input
+                                            className="new-item-input"
+                                            id="title"
+                                            type="text" required
+                                            value={formFields.title}
+                                            onChange={onTitleChange}
+                                        />
+                                </div>
+
+
+                                <div className="input-box">
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor=""><span className="details">Social Media Handle:</span></label>
+                                        <input
+                                            className="new-item-input"
+                                            id="social_media_handle"
+                                            type="text" required
+                                            value={formFields.social_media_handle}
+                                            onChange={onSocialMediaHandleChange}
                                     />
                                 </div>
+
                                 <div className="input-box">
-                                    <label htmlFor="title"><span className="details">Title:</span></label>
-                                    <input
-                                        className="new-item-input"
-                                        id="title"
-                                        type="text" required
-                                        value={formFields.title}
-                                        onChange={onTitleChange}
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="street_name"><span className="details">Street:</span></label>
+                                        <input
+                                            className="new-item-input"
+                                            id="street"
+                                            type="text" required
+                                            value={formFields.street_name}
+                                            onChange={onStreetNameChange}
                                     />
                                 </div>
+
                                 <div className="input-box">
-                                    <label htmlFor=""><span className="details">Social Media Handle:</span></label>
-                                    <input
-                                        className="new-item-input"
-                                        id="social_media_handle"
-                                        type="text" required
-                                        value={formFields.social_media_handle}
-                                        onChange={onSocialMediaHandleChange}
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="city"><span className="details">City:</span></label>
+                                        <input
+                                            className="input-text js-input"
+                                            id="city"
+                                            type="text" required
+                                            value={formFields.city}
+                                            onChange={onCityChange}
+                                        />
+                                </div>
+
+                                <div className="input-box">
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="state"><span className="details">State:</span></label>
+                                        <input
+                                            className="input-text js-input"
+                                            id="state"
+                                            type="text" required
+                                            value={formFields.state}
+                                            onChange={onStateChange}
                                     />
                                 </div>
+
                                 <div className="input-box">
-                                    <label htmlFor="street_name"><span className="details">Street:</span></label>
-                                    <input
-                                        className="new-item-input"
-                                        id="street"
-                                        type="text" required
-                                        value={formFields.street_name}
-                                        onChange={onStreetNameChange}
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="postal_code"><span className="details">Zip Code:</span></label>
+                                        <input
+                                            className="input-text js-input"
+                                            id="postal_code"
+                                            type="text" required
+                                            value={formFields.postal_code}
+                                            onChange={onPostalCodeChange}
                                     />
                                 </div>
+
                                 <div className="input-box">
-                                    <label htmlFor="city"><span className="details">City:</span></label>
-                                    <input
-                                        className="input-text js-input"
-                                        id="city"
-                                        type="text" required
-                                        value={formFields.city}
-                                        onChange={onCityChange}
-                                    />
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="country"><span className="details">Country:</span></label>
+                                        <input
+                                            className="input-text js-input"
+                                            id="country"
+                                            type="text" required
+                                            value={formFields.country}
+                                            onChange={onCountryChange}
+                                        />
                                 </div>
+
                                 <div className="input-box">
-                                    <label htmlFor="state"><span className="details">State:</span></label>
-                                    <input
-                                        className="input-text js-input"
-                                        id="state"
-                                        type="text" required
-                                        value={formFields.state}
-                                        onChange={onStateChange}
-                                    />
+                                    {/* <div className="FaUserAlt prefix"><FaUserAlt/></div> */}
+                                        <label htmlFor="description"><span className="details">Description:</span></label>
+                                        <input
+                                            className="input-text js-input box11"
+                                            id="description"
+                                            type="text" required
+                                            value={formFields.description}
+                                            onChange={onDescriptionChange}
+                                        />
                                 </div>
-                                <div className="input-box">
-                                    <label htmlFor="postal_code"><span className="details">Zip Code:</span></label>
-                                    <input
-                                        className="input-text js-input"
-                                        id="postal_code"
-                                        type="text" required
-                                        value={formFields.postal_code}
-                                        onChange={onPostalCodeChange}
-                                    />
-                                </div>
-                                <div className="input-box">
-                                    <label htmlFor="country"><span className="details">Country:</span></label>
-                                    <input
-                                        className="input-text js-input"
-                                        id="country"
-                                        type="text" required
-                                        value={formFields.country}
-                                        onChange={onCountryChange}
-                                    />
-                                </div>
-                                <div className="input-box">
-                                    <label htmlFor="description"><span className="details">Description:</span></label>
-                                    <input
-                                        className="input-text js-input"
-                                        id="description"
-                                        type="text" required
-                                        value={formFields.description}
-                                        onChange={onDescriptionChange}
-                                    />
-                                </div>
-                                </div>
-                                <div className="buttonForm">
+                            </div>
+
+                                <div className="buttonForm m-y-2">
                                     <input type="submit" className="submit-btn transparent_btn" value="Submit"></input>
                                     {/* {makeNewProvider && <NewProviderForm addProviderCallback={addProvider} />} */}
                                 </div>
+
                             </form> }
                         </div> 
                     <div id="formAreaB">
                         <PostList
                             provider={props.user}
                         />
-                    </div>
+                </div>
                 </div>
             </section>
         </>

@@ -53,11 +53,11 @@ const Post = (props) => {
 
 
     return (
-        <div className="post">
-            <h3>Message: {props.message}</h3>
+        <div id="post-container">
+            <h3 className="post-title">Message: {props.message}</h3>
             <div className="post-buttons">
                 {/* <button className="post-button" onClick={onVoteButtonClick}>💜: {props.votes}</button> */}
-                <button className="post-button" onClick={onDeleteButtonClick}> Delete </button>
+                <button className="post-button transparent_btn post-list-btn" onClick={onDeleteButtonClick}> Delete </button>
                 {/* <button onCllick={}>Submit</button> */}
             </div>
         </div>

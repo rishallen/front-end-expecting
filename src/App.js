@@ -16,6 +16,8 @@ function App() {
         <Router>
           <Navbar></Navbar>
         </Router>
+        <div className="body-container"></div>
+
         <Footer></Footer>
       </main>
     </>

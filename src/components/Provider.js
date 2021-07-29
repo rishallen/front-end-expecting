@@ -44,27 +44,30 @@ const Provider = (props) => {
     }
 
     return (
-        <div>
-            <ul>
-                <li>Provider:</li>
-                <li>Name: {props.first_name} {props.last_name}</li>
-                <li>Service: {props.title}</li>
-                <li>Social Media Handle: {props.social_media_handle}</li>
-                <li>Description: {props.description}</li>
-                <li>Address: {formatAddress(props.address)}</li>
-                { props.user &&
-                    <button onClick={toggleShowForm}>send message</button>} 
+        <section className="card-holder-container">
+            <div className="provider-container-items box-shadow">
 
-                { showForm && 
-                <form onSubmit={onFormSubmit}> 
-                    <label>
-                        comment:
-                        <input type="text" name="comment" onChange={e => onChange(e)}/> 
-                    </label>
-                    <button type="submit">submit</button>
-                </form>} 
-            </ul>
-        </div>
+                <ul className="provider-wrapper">
+                    {/* <li className="provider-item">Provider:</li> */}
+                    <li className="provider-item">{props.first_name} {props.last_name}</li>
+                    <li className="provider-item">{props.title}</li>
+                    <li className="provider-item">{props.social_media_handle}</li>
+                    <li className="provider-item">{formatAddress(props.address)}</li>
+                    { props.user &&
+                        <button onClick={toggleShowForm}>send message</button>} 
+
+                    { showForm && 
+                    <form onSubmit={onFormSubmit}> 
+                        <label>
+                            comment:
+                            <input type="text" name="comment" onChange={e => onChange(e)}/> 
+                        </label>
+                        <button type="submit">submit</button>
+                    </form>} 
+                    <li className="provider-item description extra">{props.description}</li>
+                </ul>
+            </div>
+        </section>
     );
 };
 

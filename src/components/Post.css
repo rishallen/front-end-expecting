@@ -2,7 +2,7 @@ h3 {
     margin-top: 20px;
 }
 @media (min-width: 270px){
-    #card-list {
+    #post {
         display: grid;
         grid-gap: 1rem;
         grid-template-columns: repeat(2, 1fr);
@@ -10,18 +10,67 @@ h3 {
     }
 }
 @media (min-width: 500px){
-    #card-list {
+    #post {
         margin: 0 auto;
         grid-template-columns: repeat(3, 1fr);
     }
 }
-@media (min-width: 1180px){
-    #card-list {
-        grid-template-columns: repeat(4, 1fr);
-        }
+
+.post-title {
+    font-weight: 100px;
 }
-@media (min-width: 1300px){
-    #card-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
+
+.card{
+    position: relative;
+    margin: 10px auto;
+    background: #ff8;
+    border-radius: 2px;
+    text-align: center;
+    width:100%;
+    padding-bottom: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(8, 67, 0, 0.9);
+    z-index: -1;
+    transition: all .3s ease-in-out;
+}
+
+.card::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+}
+
+.card::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+}
+
+.card:hover::before,
+.card:hover::after {
+        box-shadow: 0 2px 14px rgba(8,67,0,.9);
+}
+
+.card:hover::before {
+    left: 5px;
+}
+
+.card:hover::after {
+    right: 5px;
+}
+
+@media (min-width: 40em) {
+/* .card {width: 28vw;
+    height: 16em;
+} */
 }

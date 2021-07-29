@@ -10,6 +10,7 @@ const Register = (props) => {
     const [usernameReg, setUsernameReg] = useState('');
     const [passwordReg, setpasswordReg] = useState('');
     const [emailReg, setemailReg] = useState('');
+    const [statusMessage, setStatusMessage] = useState('')
 
     const registerUser = () => {
         axios
@@ -20,13 +21,20 @@ const Register = (props) => {
 
         }).then(response => {
             console.log(process.env.REACT_APP_BACKEND_URL);
-            // have a message that returns user created
-            // setUsernameReg(response.data);
+            setStatusMessage('You have successfully signed up!')
+            
         })
         .catch(error => {
             console.log(error)
+            setStatusMessage('Sign up failed:(')
+        
         })
-        .finally(() => console.log("Tried to get registered"));
+        .finally(() => {
+            console.log("Tried to get registered");
+            setUsernameReg('')
+            setpasswordReg('')
+            setemailReg('')
+        })
     }
 
     return (
@@ -41,23 +49,30 @@ const Register = (props) => {
                     <label htmlFor="username"></label>
                     <input type="text" value={usernameReg} autoComplete="off" name="username" placeholder="username" onChange={(e)=> {
                         setUsernameReg(e.target.value);
+                        setStatusMessage('');
                     }}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="email"></label>
                     <input type="text" value={emailReg} autoComplete="off" name="email" placeholder="email" onChange={(e)=> {
                         setemailReg(e.target.value);
+                        setStatusMessage('');
                     }}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password"></label>
                     <input type="password" value={passwordReg} autoComplete="off" name="password" placeholder="password" onChange={(e)=> {
                         setpasswordReg(e.target.value);
+                        setStatusMessage('');
                     }}/>
                 </div>
                 <div>
                     <input type="button" value="sign-up" onClick={registerUser}/>
                 </div>
+                <div>
+                    {statusMessage}
+                </div>
+                    
             </div>
         </>
     );

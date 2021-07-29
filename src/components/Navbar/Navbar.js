@@ -63,7 +63,7 @@ const Navbar = (props) => {
         <div className="logo">
             <Link to="/">
                 {/* <img src={logoImg} alt='logo' /> */}
-                <p>Expecting.com</p>
+                <p className="logo">Expecting.com</p>
             </Link>
         </div>
         {/* <Bars />
@@ -75,10 +75,10 @@ const Navbar = (props) => {
                 onClick={e => handleToggle(e)}
             />
             <ul className={`collapsed ${isExpanded ? "is-expanded" : ""}`}>
-                <li className="nav-item"><Link to="/about"  activeStyle>About</Link></li>
+                {/* <li className="nav-item"><Link to="/about"  activeStyle>About</Link></li> */}
                 <li className="nav-item"><Link to="/providerList"  activeStyle>Providers</Link></li>
                 <li className="nav-item"><Link to="/newProviderForm"  activeStyle>Provider Form</Link></li>
-                <li className="nav-item"><Link to="/post"  activeStyle>Post</Link></li>
+                {/* <li className="nav-item"><Link to="/post"  activeStyle>Post</Link></li> */}
                 {/* <li className="nav-item"><Link to="/register" className="NavLink" activeStyle>Sign Up</Link></li> */}
                     {/* </NavMenu> */}
                 <NavBtn>

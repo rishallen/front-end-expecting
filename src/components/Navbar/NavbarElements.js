@@ -84,7 +84,8 @@ export const Nav = styled.nav`
             li {
                 margin: 15px 15px;
                 justify-content: space-between;
-                font-size: 1em;
+                // font-size: 1em;
+                font-size: 1.3em;
                 // border: 2px solid green;
             }
             a {

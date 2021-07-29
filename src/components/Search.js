@@ -1,10 +1,11 @@
 import React from "react";
+import './Search.css'
 
 const SearchBar = (props) => {
 
     return (
         <form action="/" method="get" onSubmit={ e => e.preventDefault()}>
-            <label htmlFor="header-search">
+            <label className="search-bar itemA" htmlFor="header-search">
                 <span className="visually-hidden">Search for practitioner</span>
             </label>
             <input  value={props.searchQuery} 
