@@ -59,7 +59,7 @@ body {
 }
 
 .body-container {
-    background: url('/Users/rishaallen/Developer/ada-projects/front-end-expecting/src/components/Navbar/—Pngtree—rainbow_5054102 (1).png') no-repeat center center fixed; 
+    background: no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

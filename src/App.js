@@ -6,6 +6,8 @@ import {
     Link
 } from "react-router-dom";
 
+import background from './background.png'
+
 
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
         <Router>
           <Navbar></Navbar>
         </Router>
-        <div className="body-container"></div>
+        <div style={{backgroundImage: `url(${background})`}} className="body-container"></div>
 
         <Footer></Footer>
       </main>
